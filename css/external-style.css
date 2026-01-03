@@ -35,25 +35,6 @@
     min-height: calc(100vh - 60px);
   }
   
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 60px);
-    padding: 24px;
-    background: #fff;
-    border-right: 1px solid var(--border);
-  }
-  
-  .sidebar-content {
-    flex: 1;
-  }
-  
-  .sidebar-footer {
-    font-size: 13px;
-    color: var(--muted);
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-  }
   
   .sidebar-footer .footer-links {
     margin-top: 4px;
@@ -169,7 +150,7 @@
   }
   
   .timezone {
-    margin-top: 35px;
+    margin-top: 12px;
   }
   
   .timezone .form-select {
@@ -353,4 +334,69 @@
       border-bottom: 1px solid var(--border);
     }
   }
+  .modal-danger {
+    border-top: 6px solid var(--oracle-red);
+  }
   
+/* Sidebar fixed-height container */
+.sidebar {
+  position: sticky;
+  top: 60px; /* height of top header */
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: #fff;
+  border-right: 1px solid var(--border);
+}
+
+/* Sidebar content scroll-safe */
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Footer pinned to bottom */
+.sidebar-footer {
+  flex-shrink: 0;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+
+input:focus, select:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+.meeting-title-cancel-card{
+  box-shadow: none !important;
+  background: #efefef;
+  border: 1px solid #dddddd;
+}
+.calendar-wrppaer{
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.sidebar-autoheight{
+  min-height: calc(100vh - 60px);
+}
+
+
+.calendar-panel{
+  max-width: 900px; 
+  padding: 32px;
+}
+.button-height-cta{
+  height: 48px;
+}
+
+.alert-round-block{
+  width:64px;
+  height:64px;
+  background:#fdeaea;
+}
