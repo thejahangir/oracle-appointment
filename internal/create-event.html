@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Oracle – My Events</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <i class="bi bi-calendar-event me-2"></i>
+                    <span class="brand-text">ORACLE</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+            <button class="btn create-btn">
+                <i class="bi bi-plus-lg"></i>
+                <span class="create-text">Create Event</span>
+            </button>
+            <nav class="nav flex-column">
+                <a class="nav-link active">
+                    <i class="bi bi-calendar"></i>
+                    <span class="nav-text">Events</span>
+                </a>
+                <a class="nav-link"><i class="bi bi-camera-video me-2"></i> <span class="nav-text">Meetings</span></a>
+                <a class="nav-link"><i class="bi bi-people me-2"></i><span class="nav-text">Groups</span> </a>
+                <a class="nav-link"><i class="bi bi-gear me-2"></i> <span class="nav-text">Settings</span></a>
+                <!-- Administration Label -->
+                <div class="admin-label mt-4">ADMINISTRATION</div>
+                <a class="nav-link">
+                    <i class="bi bi-shield-lock me-2"></i> <span class="nav-text">Admin</span>
+                </a>
+            </nav>
+            <!-- Sidebar Footer -->
+            <div class="sidebar-footer">
+                <div class="copyright">
+                    © 2024 Oracle Corporation
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <span>•</span>
+                    <a href="#">Terms</a>
+                    <span>•</span>
+                    <a href="#">Cookie Preferences</a>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="main">
+            <header class="topbar">
+                <div class="d-flex justify-content-between align-items-center">
+                    <input class="search" placeholder="Search events, people..." />
+                    <div class="topbar-right">
+                        <!-- Notification -->
+                        <div class="notification-wrapper">
+                            <button class="notification-btn" id="notificationToggle">
+                                <i class="bi bi-bell"></i>
+                                <span class="notification-dot"></span>
+                            </button>
+                            <!-- Notification Panel -->
+                            <div class="notification-panel" id="notificationPanel">
+                                <div class="notification-header">Notifications</div>
+                                <div class="notification-item">
+                                    <strong>Marketing Sync</strong>
+                                    <span>Event starts in 30 minutes</span>
+                                </div>
+                                <div class="notification-item">
+                                    <strong>Client Onboarding</strong>
+                                    <span>New document uploaded</span>
+                                </div>
+                                <div class="notification-item muted">
+                                    <span>No more notifications</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- User Dropdown -->
+                        <div class="dropdown user-dropdown">
+                            <button class="btn avatar-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img src="https://i.pravatar.cc/36" class="user-avatar" />
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end user-menu">
+                                <!-- User Info -->
+                                <li class="user-summary">
+                                    <div class="user-name">Suneel K</div>
+                                    <div class="user-email">suneel.kandali@oracle.com</div>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-person me-2"></i> My Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-key me-2"></i> Change Password
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-gear me-2"></i> Settings
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-danger" href="#">
+                                        <i class="bi bi-box-arrow-right me-2"></i> Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section class="content">
+                <!-- Page Header -->
+                <div class="mb-4">
+                    <h3 class="fw-semibold mb-1">Create event</h3>
+                    <p class="text-muted mb-3">
+                        Select what event type you want to create
+                    </p>
+                </div>
+                <!-- Event Type Cards -->
+                <div class="row g-4">
+                    <!-- Individual -->
+                    <div class="col-12">
+                        <div class="event-type-card " id="individualEventCard" data-type="individual">
+                            <div class="event-type-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Individual</h5>
+                                <p class="text-muted mb-0">
+                                    One host with one invitee. Ideal for 1-on-1 interviews, coffee chats, or personal
+                                    consultations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Group -->
+                    <div class="col-12">
+                        <div class="event-type-card" data-type="group">
+                            <div class="event-type-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Group</h5>
+                                <p class="text-muted mb-0">
+                                    Group meeting. Meet when everyone on the team is available. Perfect for standups or
+                                    client
+                                    meetings.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Roster -->
+                    <div class="col-12">
+                        <div class="event-type-card" data-type="roster">
+                            <div class="event-type-icon">
+                                <i class="bi bi-diagram-3"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Roster</h5>
+                                <p class="text-muted mb-0">
+                                    Round-robin style event. Distribute meetings evenly among team members.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Actions -->
+                <div class="d-flex justify-content-end gap-3 mt-5">
+                    <button class="btn btn-light px-4">Cancel</button>
+                    <button class="btn btn-danger px-4" id="continueBtn" disabled>
+                        Continue <i class="bi bi-arrow-right ms-1"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</body>
+
+</html>
