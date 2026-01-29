@@ -1,0 +1,468 @@
+/* =====================================================
+   BASE
+===================================================== */
+body {
+    background: #f5f7fa;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+  }
+  
+  .app-container {
+    min-height: 100vh;
+  }
+  
+  /* =====================================================
+     LAYOUT
+  ===================================================== */
+  .layout {
+    display: flex;
+    min-height: calc(100vh - 56px);
+  }
+  
+  .content {
+    flex: 1;
+    padding: 24px;
+    background: #f5f7fa;
+  }
+  
+  /* =====================================================
+     TOP NAVIGATION
+  ===================================================== */
+  .top-nav {
+    height: 56px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .nav-left,
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  
+  .icon-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #374151;
+  }
+  
+  .oracle-logo {
+    width: 200px;
+  }
+  
+  .app-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .help-link {
+    font-size: 12px;
+    color: #6b7280;
+    text-decoration: none;
+  }
+  
+  /* =====================================================
+     SIDEBAR
+  ===================================================== */
+  .sidebar {
+    background: #111827;
+    color: #ffffff;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    transition: width 0.25s ease, transform 0.25s ease;
+    overflow: hidden;
+  }
+  
+  .sidebar.expanded {
+    width: 220px;
+  }
+  
+  .sidebar.collapsed {
+    width: 60px;
+  }
+  
+  /* Sidebar Items */
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 18px;
+    font-size: 14px;
+    color: #d1d5db;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .sidebar-item i {
+    width: 18px;
+    font-size: 16px;
+  }
+  
+  .sidebar-item .label {
+    white-space: nowrap;
+  }
+  
+  .sidebar-item:hover,
+  .sidebar-item.active {
+    background: #1f2937;
+    color: #ffffff;
+  }
+  
+  /* Collapsed: icons only */
+  .sidebar.collapsed .label {
+    display: none;
+  }
+  
+  /* =====================================================
+     SUBMENUS
+  ===================================================== */
+  .submenu {
+    display: none;
+    padding-left: 36px;
+  }
+  
+  .submenu.open {
+    display: block;
+  }
+  
+  .submenu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 18px;
+    font-size: 13px;
+    color: #d1d5db;
+    cursor: pointer;
+  }
+  
+  .submenu-item i {
+    width: 18px;
+    font-size: 14px;
+  }
+  
+  .submenu-item:hover {
+    color: #ffffff;
+  }
+  
+  /* Collapsed sidebar → icons only */
+  .sidebar.collapsed .submenu {
+    padding-left: 0;
+  }
+  
+  .sidebar.collapsed .submenu-item span {
+    display: none;
+  }
+  
+  /* Chevron */
+  .submenu-icon {
+    margin-left: auto;
+    font-size: 12px;
+    transition: transform 0.2s ease;
+  }
+  
+  .has-submenu.open > .submenu-icon {
+    transform: rotate(90deg);
+  }
+  
+  /* =====================================================
+     MOBILE SIDEBAR OVERLAY
+  ===================================================== */
+  @media (max-width: 991px) {
+    .sidebar {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      height: calc(100vh - 56px);
+      transform: translateX(-100%);
+      z-index: 1050;
+    }
+  
+    .sidebar.expanded {
+      transform: translateX(0);
+    }
+  
+    .sidebar-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1040;
+      display: none;
+    }
+  
+    .sidebar-backdrop.show {
+      display: block;
+    }
+  }
+  
+  /* =====================================================
+     PAGE HEADER
+  ===================================================== */
+  .page-header {
+    margin-bottom: 28px;
+  }
+  
+  .page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+  
+  .page-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 6px;
+  }
+  
+  /* =====================================================
+     FILTER PANEL
+  ===================================================== */
+  .filter-panel {
+    background: #ffffff;
+    padding: 18px 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    margin-bottom: 24px;
+  }
+  
+  .filter-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #6b7280;
+  }
+  
+  .filter-select {
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    font-size: 14px;
+  }
+  
+  .filter-select:focus {
+    box-shadow: none;
+    border-color: #d1d5db;
+  }
+  
+  .reset-btn {
+    height: 44px;
+    border-radius: 10px;
+    font-size: 14px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+  }
+  
+  /* =====================================================
+     STAT CARDS
+  ===================================================== */
+  .stat-card-v2 {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 22px 22px 26px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  }
+  
+  .card-header h5 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+  
+  .card-header p {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 2px;
+  }
+  
+  .card-value {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 800;
+    color: #111827;
+    margin: 14px 0 10px;
+  }
+  
+  .donut-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0 18px;
+  }
+  
+  .donut-chart {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(
+      #10b981 calc(var(--value) * 1%),
+      #ef4444 0
+    );
+    position: relative;
+  }
+  
+  .donut-chart::after {
+    content: "";
+    position: absolute;
+    inset: 22px;
+    background: #e5f7f1;
+    border-radius: 50%;
+  }
+  
+  .card-footer-info {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card-footer-info .label {
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  .card-footer-info .value {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  .card-progress {
+    height: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 12px;
+  }
+  
+  /* =====================================================
+     USER MENU DROPDOWN
+  ===================================================== */
+  .user-menu-container {
+    position: relative;
+  }
+  
+  .user-menu-trigger {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .user-chevron {
+    transition: transform 0.2s ease;
+  }
+  
+  .user-menu-trigger.open .user-chevron {
+    transform: rotate(180deg);
+  }
+  
+  .user-dropdown {
+    position: absolute;
+    right: 0;
+    top: 48px;
+    width: 220px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    opacity: 0;
+    transform: scale(0.96) translateY(-8px);
+    pointer-events: none;
+    transition: all 0.18s ease;
+    z-index: 2000;
+  }
+  
+  .user-dropdown.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+  }
+  
+  .user-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #111827;
+  }
+  
+  .user-dropdown-item:hover {
+    background: #f9fafb;
+  }
+  
+  .dropdown-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 6px 4px;
+  }
+  /* =========================
+   Reset Filters Button
+========================= */
+.reset-filters-btn {
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid #f87171;        /* soft red border */
+    background: #ffffff;
+    color: #ef4444;                   /* red text */
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+  }
+  
+  .reset-filters-btn i {
+    font-size: 14px;
+  }
+  
+  /* Hover */
+  .reset-filters-btn:hover {
+    background: #fff5f5;
+    border-color: #ef4444;
+  }
+  
+  /* Active / pressed */
+  .reset-filters-btn:active {
+    transform: translateY(1px);
+  }
+  /* Disabled state */
+.reset-filters-btn:disabled {
+    border-color: #fecaca;     /* lighter red */
+    color: #fca5a5;
+    background: #ffffff;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  .reset-filters-btn:disabled:hover {
+    background: #ffffff;
+  }
+  
+  
